@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		147BF18E2BB8D3890020F0D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 147BF18D2BB8D3890020F0D8 /* main.m */; };
+		14F729472BBD2D07007704BC /* XIBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729462BBD2D07007704BC /* XIBParser.m */; };
+		14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729492BBDDC48007704BC /* XIBAbstractCodeGenerator.m */; };
+		14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7294C2BBDDCB8007704BC /* NSString+Additions.m */; };
+		14F729502BBDDD65007704BC /* XIBCustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7294F2BBDDD65007704BC /* XIBCustomObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,14 @@
 /* Begin PBXFileReference section */
 		147BF18A2BB8D3890020F0D8 /* xib2coder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xib2coder; sourceTree = BUILT_PRODUCTS_DIR; };
 		147BF18D2BB8D3890020F0D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14F729452BBD2D07007704BC /* XIBParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBParser.h; sourceTree = "<group>"; };
+		14F729462BBD2D07007704BC /* XIBParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBParser.m; sourceTree = "<group>"; };
+		14F729482BBDDC48007704BC /* XIBAbstractCodeGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBAbstractCodeGenerator.h; sourceTree = "<group>"; };
+		14F729492BBDDC48007704BC /* XIBAbstractCodeGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBAbstractCodeGenerator.m; sourceTree = "<group>"; };
+		14F7294B2BBDDCB8007704BC /* NSString+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		14F7294C2BBDDCB8007704BC /* NSString+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		14F7294E2BBDDD65007704BC /* XIBCustomObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBCustomObject.h; sourceTree = "<group>"; };
+		14F7294F2BBDDD65007704BC /* XIBCustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBCustomObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +69,25 @@
 		147BF18C2BB8D3890020F0D8 /* xib2coder */ = {
 			isa = PBXGroup;
 			children = (
+				14F729442BBD2CC3007704BC /* Parser */,
 				147BF18D2BB8D3890020F0D8 /* main.m */,
 			);
 			path = xib2coder;
+			sourceTree = "<group>";
+		};
+		14F729442BBD2CC3007704BC /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				14F729452BBD2D07007704BC /* XIBParser.h */,
+				14F729462BBD2D07007704BC /* XIBParser.m */,
+				14F729482BBDDC48007704BC /* XIBAbstractCodeGenerator.h */,
+				14F729492BBDDC48007704BC /* XIBAbstractCodeGenerator.m */,
+				14F7294B2BBDDCB8007704BC /* NSString+Additions.h */,
+				14F7294C2BBDDCB8007704BC /* NSString+Additions.m */,
+				14F7294E2BBDDD65007704BC /* XIBCustomObject.h */,
+				14F7294F2BBDDD65007704BC /* XIBCustomObject.m */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F729502BBDDD65007704BC /* XIBCustomObject.m in Sources */,
+				14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */,
+				14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */,
+				14F729472BBD2D07007704BC /* XIBParser.m in Sources */,
 				147BF18E2BB8D3890020F0D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
