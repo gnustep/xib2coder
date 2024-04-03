@@ -12,6 +12,7 @@
 		14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729492BBDDC48007704BC /* XIBAbstractCodeGenerator.m */; };
 		14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7294C2BBDDCB8007704BC /* NSString+Additions.m */; };
 		14F729502BBDDD65007704BC /* XIBCustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7294F2BBDDD65007704BC /* XIBCustomObject.m */; };
+		14F729532BBDF2EF007704BC /* XIBObjCCodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729522BBDF2EF007704BC /* XIBObjCCodeBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		14F7294C2BBDDCB8007704BC /* NSString+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		14F7294E2BBDDD65007704BC /* XIBCustomObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBCustomObject.h; sourceTree = "<group>"; };
 		14F7294F2BBDDD65007704BC /* XIBCustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBCustomObject.m; sourceTree = "<group>"; };
+		14F729512BBDF2EF007704BC /* XIBObjCCodeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBObjCCodeBuilder.h; sourceTree = "<group>"; };
+		14F729522BBDF2EF007704BC /* XIBObjCCodeBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBObjCCodeBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				14F7294C2BBDDCB8007704BC /* NSString+Additions.m */,
 				14F7294E2BBDDD65007704BC /* XIBCustomObject.h */,
 				14F7294F2BBDDD65007704BC /* XIBCustomObject.m */,
+				14F729512BBDF2EF007704BC /* XIBObjCCodeBuilder.h */,
+				14F729522BBDF2EF007704BC /* XIBObjCCodeBuilder.m */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */,
 				14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */,
 				14F729472BBD2D07007704BC /* XIBParser.m in Sources */,
+				14F729532BBDF2EF007704BC /* XIBObjCCodeBuilder.m in Sources */,
 				147BF18E2BB8D3890020F0D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

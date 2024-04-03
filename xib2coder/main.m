@@ -7,10 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Parser/XIBObjCCodeBuilder.h"
+#import "Parser/XIBParser.h"
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        NSLog(@"Hello, World!");
+        NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/MainMenu.xib"];
+        XIBParser *xibParser = [[XIBParser alloc] initWithData: data];
+        NSDictionary *result = [xibParser parse];
+        XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: result];
+        NSString *code = [builder build];
+        NSLog(@"Dictionary: %@", result);
     }
     return 0;
 }
