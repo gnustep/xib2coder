@@ -18,7 +18,7 @@ int main(int argc, const char * argv[]) {
         NSDictionary *result = [xibParser parse];
         XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: result];
         NSString *code = [builder build];
-        NSLog(@"Dictionary: %@", result);
+        NSLog(@"Code: %@", code);
     }
     return 0;
 }

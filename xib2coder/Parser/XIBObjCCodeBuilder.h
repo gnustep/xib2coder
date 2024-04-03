@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XIBObjCCodeBuilder : NSObject
 
+@property (retain) NSDictionary *dictionary;
+
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary;
 - (NSString *) build;
 

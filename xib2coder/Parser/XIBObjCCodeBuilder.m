@@ -11,7 +11,14 @@
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary
 {
-    return nil;
+    self = [super init];
+    
+    if (self != nil)
+    {
+        self.dictionary = dictionary;
+    }
+    
+    return self;;
 }
 
 - (NSString *) build
