@@ -7,15 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "XIBAbstractBuilder.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XIBObjCCodeBuilder : NSObject
+static NSArray *__skippedKeys = nil;
 
-@property (retain) NSDictionary *dictionary;
-
-- (instancetype) initWithDictionary: (NSDictionary *)dictionary;
-- (BOOL) build;
-
+@interface XIBObjCCodeBuilder : XIBAbstractBuilder
 @end
 
 NS_ASSUME_NONNULL_END

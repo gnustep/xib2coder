@@ -6,24 +6,55 @@
 //
 
 #import "XIBObjCCodeBuilder.h"
+#import "XIBObjCClassBuilder.h"
 
 @implementation XIBObjCCodeBuilder
 
++ (void) initialize
+{
+    if (nil == __skippedKeys)
+    {
+        __skippedKeys = [NSArray arrayWithObjects: @"elementName", @"_ordered",
+                         @"customClass", @"connections", nil];
+    }
+}
+
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary
 {
-    self = [super init];
-    
+    self = [super initWithDictionary: dictionary];
     if (self != nil)
     {
-        self.dictionary = dictionary;
+        NSDictionary *objects = [self.dictionary objectForKey: @"objects"];
+        self.dictionary = objects;
     }
-    
-    return self;;
+    return self;
 }
 
 - (BOOL) build
 {
-    return NO;
+    NSEnumerator *en = [self.dictionary keyEnumerator];
+    id k = nil;
+    
+    while((k = [en nextObject]) != nil)
+    {
+        if ([__skippedKeys containsObject: k])
+        {
+            continue;
+        }
+        else
+        {
+            id o = [self.dictionary objectForKey: k];
+            if(o != nil)
+            {
+                XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o];
+                if (NO == [builder build])
+                {
+                    return NO;
+                }
+            }
+        }
+    }
+    
+    return YES;
 }
-
 @end
