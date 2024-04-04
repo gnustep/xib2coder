@@ -11,8 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSArray *__skippedKeys = nil;
-
 @interface XIBObjCCodeBuilder : XIBAbstractBuilder
 @end
 

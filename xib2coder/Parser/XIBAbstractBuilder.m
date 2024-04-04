@@ -9,6 +9,25 @@
 
 @implementation XIBAbstractBuilder
 
++ (void) initialize
+{
+    if (nil == __skippedKeys)
+    {
+        __skippedKeys = [NSArray arrayWithObjects: @"elementName", @"_ordered",
+                         @"customClass", @"connections", nil];
+    }
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    if (self != nil)
+    {
+        // self.dictionary = nil;
+    }
+    return self;
+}
+
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary
 {
     self = [super init];

@@ -8,16 +8,9 @@
 #import "XIBObjCCodeBuilder.h"
 #import "XIBObjCClassBuilder.h"
 
-@implementation XIBObjCCodeBuilder
+extern NSArray *__skippedKeys;
 
-+ (void) initialize
-{
-    if (nil == __skippedKeys)
-    {
-        __skippedKeys = [NSArray arrayWithObjects: @"elementName", @"_ordered",
-                         @"customClass", @"connections", nil];
-    }
-}
+@implementation XIBObjCCodeBuilder
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary
 {

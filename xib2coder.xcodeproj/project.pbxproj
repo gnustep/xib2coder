@@ -15,6 +15,7 @@
 		14F729532BBDF2EF007704BC /* XIBObjCCodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729522BBDF2EF007704BC /* XIBObjCCodeBuilder.m */; };
 		14F729562BBE8902007704BC /* XIBObjCClassBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729552BBE8902007704BC /* XIBObjCClassBuilder.m */; };
 		14F729592BBE8937007704BC /* XIBAbstractBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729582BBE8937007704BC /* XIBAbstractBuilder.m */; };
+		14F7295C2BBE9D29007704BC /* XIBObjCAccessorBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7295B2BBE9D29007704BC /* XIBObjCAccessorBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,8 @@
 		14F729552BBE8902007704BC /* XIBObjCClassBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBObjCClassBuilder.m; sourceTree = "<group>"; };
 		14F729572BBE8937007704BC /* XIBAbstractBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBAbstractBuilder.h; sourceTree = "<group>"; };
 		14F729582BBE8937007704BC /* XIBAbstractBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBAbstractBuilder.m; sourceTree = "<group>"; };
+		14F7295A2BBE9D29007704BC /* XIBObjCAccessorBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBObjCAccessorBuilder.h; sourceTree = "<group>"; };
+		14F7295B2BBE9D29007704BC /* XIBObjCAccessorBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBObjCAccessorBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				14F729552BBE8902007704BC /* XIBObjCClassBuilder.m */,
 				14F729572BBE8937007704BC /* XIBAbstractBuilder.h */,
 				14F729582BBE8937007704BC /* XIBAbstractBuilder.m */,
+				14F7295A2BBE9D29007704BC /* XIBObjCAccessorBuilder.h */,
+				14F7295B2BBE9D29007704BC /* XIBObjCAccessorBuilder.m */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F7295C2BBE9D29007704BC /* XIBObjCAccessorBuilder.m in Sources */,
 				14F729502BBDDD65007704BC /* XIBCustomObject.m in Sources */,
 				14F729562BBE8902007704BC /* XIBObjCClassBuilder.m in Sources */,
 				14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */,

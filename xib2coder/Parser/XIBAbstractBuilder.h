@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSArray *__skippedKeys = nil;
+
 @interface XIBAbstractBuilder : NSObject
 
 @property (retain) NSDictionary *dictionary;
