@@ -21,9 +21,9 @@
     return self;;
 }
 
-- (NSString *) build
+- (BOOL) build
 {
-    return nil;
+    return NO;
 }
 
 @end

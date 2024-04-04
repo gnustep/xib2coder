@@ -16,9 +16,14 @@ int main(int argc, const char * argv[]) {
         NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/MainMenu.xib"];
         XIBParser *xibParser = [[XIBParser alloc] initWithData: data];
         NSDictionary *result = [xibParser parse];
-        XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: result];
-        NSString *code = [builder build];
-        NSLog(@"Code: %@", code);
+        NSDictionary *objects = [result objectForKey: @"objects"];
+        XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: objects];
+        BOOL success = [builder build];
+        
+        if (success == NO)
+        {
+            return 255;
+        }
     }
     return 0;
 }

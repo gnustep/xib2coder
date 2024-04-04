@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *runtime;
 @property (nonatomic, retain) NSString *ownerName;
-@property (nonatomic, retain) NSString *source;
 
 // Main object dictionary
 @property (nonatomic, retain) NSDictionary *objectDictionary;

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain) NSDictionary *dictionary;
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary;
-- (NSString *) build;
+- (BOOL) build;
 
 @end
 

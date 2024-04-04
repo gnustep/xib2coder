@@ -20,7 +20,6 @@
     if (self != nil)
     {
         self.ownerName = @"";
-        self.source = @"";
         self.classMapping = [self buildClassMap];
         self.name = [aname lastPathComponent];
         self.name = [self.name stringByDeletingPathExtension];
@@ -363,8 +362,6 @@
 {
     [self createCategory];
     [self generationComplete];
-    
-    NSLog(@"source = \n%@\n", self.source);
 }
 
 @end
