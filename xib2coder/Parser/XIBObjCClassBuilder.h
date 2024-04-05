@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain) NSString *source;
 @property (retain) NSString *coding;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

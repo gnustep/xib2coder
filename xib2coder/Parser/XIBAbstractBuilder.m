@@ -5,6 +5,9 @@
 //  Created by Gregory John Casamento on 4/4/24.
 //
 
+#import <Foundation/NSString.h>
+#import <Foundation/NSDictionary.h>
+
 #import "XIBAbstractBuilder.h"
 
 @implementation XIBAbstractBuilder
@@ -23,6 +26,7 @@
     self = [super init];
     if (self != nil)
     {
+        self.classMapping = [self buildClassMap];
         // self.dictionary = nil;
     }
     return self;
@@ -35,10 +39,16 @@
     if (self != nil)
     {
         self.dictionary = dictionary;
+        self.classMapping = [self buildClassMap];
         NSLog(@"Dictionary = %@", self.dictionary);
     }
     
     return self;
+}
+
+- (NSDictionary *) buildClassMap
+{
+    return [NSDictionary dictionary];
 }
 
 - (BOOL) build
