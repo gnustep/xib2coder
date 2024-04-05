@@ -5,6 +5,9 @@
 //  Created by Gregory John Casamento on 4/4/24.
 //
 
+#import <Foundation/NSDictionary.h>
+#import <Foundation/NSString.h>
+
 #import "XIBObjCClassBuilder.h"
 #import "XIBObjCAccessorBuilder.h"
 
@@ -26,11 +29,8 @@ extern NSArray *__skippedKeys;
 
 - (BOOL) build
 {
-    NSString *className = [self.dictionary objectForKey: @"elementName"];
-    NSString *customClassName = [self.dictionary objectForKey: @"customClass"];
+    self.className = [self.dictionary objectForKey: @"elementName"];
     
-    // if ([customClassName rangeOfString: @"Object"])
-    self.header = [NSString stringWithFormat: @"@interface %@", className];
     NSEnumerator *en = [self.dictionary keyEnumerator];
     id k = nil;
     while ((k = [en nextObject]) != nil)
