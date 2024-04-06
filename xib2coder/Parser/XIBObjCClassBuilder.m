@@ -107,6 +107,8 @@
     NSEnumerator *en = [self.dictionary keyEnumerator];
     id k = nil;
     
+    NSLog(@"dictionary = %@", self.dictionary);
+    
     self.className = [self entityNameForElementName: elementName];
     while ((k = [en nextObject]) != nil)
     {
@@ -130,7 +132,17 @@
         }
         else
         {
-            
+            NSString *keyName = [o objectForKey: @"key"];
+            if (keyName != nil)
+            {
+                NSString *elemName = [o objectForKey: @"elementName"];
+                NSString *clzName = [self entityNameForElementName: elemName];
+                [self.attributes setObject: clzName forKey: keyName];
+            }
+            else
+            {
+                
+            }
         }
     }
     
