@@ -128,11 +128,31 @@
                 NSLog(@"OType is nil");
             }
         }
+        else
+        {
+            
+        }
     }
     
-    NSLog(@"className = %@, attributes = %@", self.className, self.attributes);
+    // NSLog(@"self = %@", self);
     
     return YES;
 }
 
+- (id) copyWithZone:(NSZone *)zone
+{
+    XIBObjCClassBuilder *obj = [[XIBObjCClassBuilder alloc] initWithDictionary: self.dictionary];
+
+    obj.runtime = [self.runtime copyWithZone: zone];
+    obj.attributes = [self.attributes copyWithZone: zone];
+    obj.header = [self.header copyWithZone: zone];
+    obj.source = [self.source copyWithZone: zone];
+    
+    return obj;
+}
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat: @"<%@> - className = %@, attributes = %@", [super description], self.className, self.attributes];
+}
 @end

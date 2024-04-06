@@ -12,6 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XIBObjCCodeBuilder : XIBAbstractBuilder
+
+@property (retain) NSMutableDictionary *resultsDictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

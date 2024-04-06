@@ -17,6 +17,7 @@
     {
         NSDictionary *objects = [self.dictionary objectForKey: @"objects"];
         self.dictionary = objects;
+        self.resultsDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -43,9 +44,23 @@
                 {
                     return NO;
                 }
+                else
+                {
+                    XIBObjCClassBuilder *b = [self.resultsDictionary objectForKey: builder.className];
+                    if (b == nil)
+                    {
+                        [self.resultsDictionary setObject: builder forKey: builder.className];
+                    }
+                    else
+                    {
+                        [b.attributes addEntriesFromDictionary: builder.attributes];
+                    }
+                }
             }
         }
     }
+    
+    NSLog(@"resultsDictionary = %@", self.resultsDictionary);
     
     return YES;
 }

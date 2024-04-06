@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XIBObjCClassBuilder : XIBAbstractBuilder
+@interface XIBObjCClassBuilder : XIBAbstractBuilder <NSCopying>
 
 @property (retain) NSString *className;
 @property (retain) NSMutableDictionary *attributes;
