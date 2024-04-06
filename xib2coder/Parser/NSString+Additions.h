@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (Additions)
 
 - (NSString *) stringByCapitalizingFirstCharacter;
+- (BOOL) isNumeric;
 
 @end
 

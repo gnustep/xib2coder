@@ -8,8 +8,6 @@
 #import "XIBObjCCodeBuilder.h"
 #import "XIBObjCClassBuilder.h"
 
-extern NSArray *__skippedKeys;
-
 @implementation XIBObjCCodeBuilder
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary
@@ -30,7 +28,7 @@ extern NSArray *__skippedKeys;
     
     while((k = [en nextObject]) != nil)
     {
-        if ([__skippedKeys containsObject: k])
+        if ([self.skippedKeys containsObject: k])
         {
             continue;
         }
@@ -40,6 +38,7 @@ extern NSArray *__skippedKeys;
             if(o != nil)
             {
                 XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o];
+                builder.runtime = self.runtime;
                 if (NO == [builder build])
                 {
                     return NO;

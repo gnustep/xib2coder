@@ -7,19 +7,11 @@
 
 #import <Foundation/NSString.h>
 #import <Foundation/NSDictionary.h>
+#import <Foundation/NSException.h>
 
 #import "XIBAbstractBuilder.h"
 
 @implementation XIBAbstractBuilder
-
-+ (void) initialize
-{
-    if (nil == __skippedKeys)
-    {
-        __skippedKeys = [NSArray arrayWithObjects: @"elementName", @"_ordered",
-                         @"customClass", @"connections", nil];
-    }
-}
 
 - (instancetype) init
 {
@@ -38,12 +30,18 @@
     
     if (self != nil)
     {
+        NSAssert([dictionary isKindOfClass: [NSDictionary class]], @"Parameter is not a dictionary %@", dictionary);
         self.dictionary = dictionary;
         self.classMapping = [self buildClassMap];
-        NSLog(@"Dictionary = %@", self.dictionary);
+        self.skippedKeys = [self buildSkippedKeys];
     }
     
     return self;
+}
+
+- (NSArray *) buildSkippedKeys
+{
+    return [NSArray arrayWithObjects: @"_ordered", @"elementName", nil];
 }
 
 - (NSDictionary *) buildClassMap

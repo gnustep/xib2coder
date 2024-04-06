@@ -9,15 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSArray *__skippedKeys = nil;
-
-@class NSString, NSDictionary;
+@class NSString, NSDictionary, NSArray;
 
 @interface XIBAbstractBuilder : NSObject
 
 @property (retain) NSDictionary *dictionary;
 @property (retain) NSString *runtime;
 @property (retain) NSDictionary *classMapping;
+@property (retain) NSArray *skippedKeys;
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary;
 - (NSDictionary *) buildClassMap;

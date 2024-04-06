@@ -12,8 +12,6 @@
 #import "XIBObjCAccessorBuilder.h"
 #import "NSString+Additions.h"
 
-extern NSArray *__skippedKeys;
-
 @implementation XIBObjCClassBuilder
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary
@@ -24,10 +22,25 @@ extern NSArray *__skippedKeys;
         self.header = @"";
         self.source = @"";
         self.coding = @"";
+        self.attributes = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
+- (NSDictionary *) buildClassMap
+{
+    NSDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                // @"XIBCustomObject", @"NSCustomObject",
+                                @"NSNibOutletConnector", @"NSOutlet",
+                                @"NSNibControlConnector", @"NSAction",
+                                @"NSString", @"NSTaggedPointerString",
+                                @"NSString", @"__NSCFConstantString",
+                                @"NSString", @"__NSCFString",
+                                nil];
+    return dictionary;
+}
+
+// Class specific
 - (NSString *) entityNameForElementName: (NSString *)elementName
 {
     NSString *prefix = nil;
@@ -53,16 +66,41 @@ extern NSArray *__skippedKeys;
     return result;
 }
 
-- (NSDictionary *) buildClassMap
+- (NSString *) typeForEntityValue: (id)o
 {
-    NSDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                @"XIBCustomObject", @"NSCustomObject",
-                                @"NSNibOutletConnector", @"NSOutlet",
-                                @"NSNibControlConnector", @"NSAction",
-                                nil];
-    return dictionary;
+    NSString *typeName = nil;
+
+    if ([o isNumeric])
+    {
+        if ([o containsString: @"-"])
+        {
+            typeName = @"NSInteger";
+        }
+        else if ([o containsString: @"."])
+        {
+            typeName = @"CGFloat";
+        }
+        else
+        {
+            typeName =  @"NSUInteger";
+        }
+    }
+    else
+    {
+        typeName = NSStringFromClass([o class]);
+    }
+    
+    NSString *newType = [self.classMapping objectForKey: typeName];
+    if (newType != nil)
+    {
+        typeName = newType;
+    }
+    
+    
+    return typeName;
 }
 
+// build method...
 - (BOOL) build
 {
     NSString *elementName = [self.dictionary objectForKey: @"elementName"];
@@ -72,7 +110,7 @@ extern NSArray *__skippedKeys;
     self.className = [self entityNameForElementName: elementName];
     while ((k = [en nextObject]) != nil)
     {
-        if ([__skippedKeys containsObject: k])
+        if ([self.skippedKeys containsObject: k])
         {
             continue;
         }
@@ -80,15 +118,19 @@ extern NSArray *__skippedKeys;
         id o = [self.dictionary objectForKey: k];
         if ([o isKindOfClass: [NSDictionary class]] == NO)
         {
-            NSString *otype = NSStringFromClass([o class]);
+            NSString *otype = [self typeForEntityValue: o];
             if (otype != nil)
             {
                 [self.attributes setObject: otype forKey: k];
             }
+            else
+            {
+                NSLog(@"OType is nil");
+            }
         }
     }
     
-    NSLog(@"attrs = %@", self.attributes);
+    NSLog(@"className = %@, attributes = %@", self.className, self.attributes);
     
     return YES;
 }
