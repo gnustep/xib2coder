@@ -22,7 +22,7 @@
     return self;
 }
 
-- (BOOL) build
+- (id) build
 {
     NSEnumerator *en = [self.dictionary keyEnumerator];
     id k = nil;
@@ -42,7 +42,7 @@
                 builder.runtime = self.runtime;
                 if (NO == [builder build])
                 {
-                    return NO;
+                    return nil;
                 }
                 else
                 {
@@ -62,6 +62,6 @@
     
     NSLog(@"resultsDictionary = %@", self.resultsDictionary);
     
-    return YES;
+    return self;
 }
 @end

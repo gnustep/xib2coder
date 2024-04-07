@@ -41,7 +41,7 @@
 
 - (NSArray *) buildSkippedKeys
 {
-    return [NSArray arrayWithObjects: @"_ordered", @"elementName", nil];
+    return [NSArray arrayWithObjects: @"_ordered", @"elementName", @"key", @"connections", nil];
 }
 
 - (NSDictionary *) buildClassMap
@@ -49,9 +49,9 @@
     return [NSDictionary dictionary];
 }
 
-- (BOOL) build
+- (id) build
 {
-    return NO;
+    return nil;
 }
 
 @end

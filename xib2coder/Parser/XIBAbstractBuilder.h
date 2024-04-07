@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary;
 - (NSDictionary *) buildClassMap;
-- (BOOL) build;
+- (id) build;
 
 @end
 

@@ -96,12 +96,11 @@
         typeName = newType;
     }
     
-    
     return typeName;
 }
 
 // build method...
-- (BOOL) build
+- (id) build
 {
     NSString *elementName = [self.dictionary objectForKey: @"elementName"];
     NSEnumerator *en = [self.dictionary keyEnumerator];
@@ -133,22 +132,22 @@
         else
         {
             NSString *keyName = [o objectForKey: @"key"];
-            if (keyName != nil)
+            if (keyName != nil) // object
             {
                 NSString *elemName = [o objectForKey: @"elementName"];
                 NSString *clzName = [self entityNameForElementName: elemName];
                 [self.attributes setObject: clzName forKey: keyName];
             }
-            else
+            else // struct
             {
-                
+                NSString *elemName = [o objectForKey: @"elementName"];
+                NSString *clzName = [self entityNameForElementName: elemName];
+                [self.attributes setObject: clzName forKey: k];
             }
         }
     }
     
-    // NSLog(@"self = %@", self);
-    
-    return YES;
+    return self;
 }
 
 - (id) copyWithZone:(NSZone *)zone
