@@ -13,8 +13,8 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        // NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/MainMenu.xib"];
-        NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/Main.storyboard"];
+        NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/MainMenu.xib"];
+        // NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/Main.storyboard"];
         
         XIBParser *xibParser = [[XIBParser alloc] initWithData: data];
         NSDictionary *result = [xibParser parse];

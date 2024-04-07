@@ -141,19 +141,21 @@
             {
                 NSString *elemName = [o objectForKey: @"elementName"];
                 NSString *clzName = [self entityNameForElementName: elemName];
+
                 [self.attributes setObject: clzName forKey: keyName];
             }
             else // struct
             {
                 NSString *elemName = [o objectForKey: @"elementName"];
                 NSString *clzName = [self entityNameForElementName: elemName];
+
                 [self.attributes setObject: clzName forKey: k];
             }
             
             XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o withTargetRuntime: self.runtime];
+            
             builder.codeBuilder = self.codeBuilder;
             [builder build];
-            
             [builder.codeBuilder addBuiltClass: builder];
         }
     }
