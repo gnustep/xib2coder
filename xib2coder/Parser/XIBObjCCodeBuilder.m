@@ -10,22 +10,30 @@
 
 @implementation XIBObjCCodeBuilder
 
-- (instancetype) initWithDictionary: (NSDictionary *)dictionary
+- (instancetype) initWithDictionary: (NSDictionary *)dictionary withTargetRuntime: (NSString *)runtime
 {
-    self = [super initWithDictionary: dictionary];
+    self = [super initWithDictionary: dictionary withTargetRuntime: runtime];
     if (self != nil)
     {
-        NSDictionary *objects = [self.dictionary objectForKey: @"objects"];
-        self.dictionary = [NSDictionary dictionaryWithObject: objects forKey: @"objects"];
-        self.resultsDictionary = [NSMutableDictionary dictionary];
+        if ([self.runtime isEqualToString: @"MacOSX.Cocoa"])
+        {
+            NSDictionary *objects = [self.dictionary objectForKey: @"objects"];
+            self.dictionary = [NSDictionary dictionaryWithObject: objects forKey: @"objects"];
+            self.resultsDictionary = [NSMutableDictionary dictionary];
+        }
+        else if ([self.runtime isEqualToString: @"iOS.CocoaTouch"])
+        {
+            NSDictionary *objects = [self.dictionary objectForKey: @"scenes"];
+            self.dictionary = [NSDictionary dictionaryWithObject: objects forKey: @"scenes"];
+            self.resultsDictionary = [NSMutableDictionary dictionary];
+        }
     }
     return self;
 }
 
 - (id) build
 {
-    XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: self.dictionary];
-    builder.runtime = self.runtime;
+    XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: self.dictionary withTargetRuntime: self.runtime];
     builder.codeBuilder = self;
     [builder build];
  

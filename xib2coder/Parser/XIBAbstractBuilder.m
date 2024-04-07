@@ -24,13 +24,14 @@
     return self;
 }
 
-- (instancetype) initWithDictionary: (NSDictionary *)dictionary
+- (instancetype) initWithDictionary: (NSDictionary *)dictionary withTargetRuntime:(nonnull NSString *)runtime
 {
     self = [super init];
     
     if (self != nil)
     {
         NSAssert([dictionary isKindOfClass: [NSDictionary class]], @"Parameter is not a dictionary %@", dictionary);
+        self.runtime = runtime;
         self.dictionary = dictionary;
         self.classMapping = [self buildClassMap];
         self.skippedKeys = [self buildSkippedKeys];

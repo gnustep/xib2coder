@@ -15,9 +15,9 @@
 
 @implementation XIBObjCClassBuilder
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary withTargetRuntime:(nonnull NSString *)runtime
 {
-    self = [super initWithDictionary: dictionary];
+    self = [super initWithDictionary: dictionary withTargetRuntime: runtime];
     if (self != nil)
     {
         self.header = @"";
@@ -150,8 +150,7 @@
                 [self.attributes setObject: clzName forKey: k];
             }
             
-            XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o];
-            builder.runtime = self.runtime;
+            XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o withTargetRuntime: self.runtime];
             builder.codeBuilder = self.codeBuilder;
             [builder build];
             
@@ -164,9 +163,9 @@
 
 - (id) copyWithZone:(NSZone *)zone
 {
-    XIBObjCClassBuilder *obj = [[XIBObjCClassBuilder alloc] initWithDictionary: self.dictionary];
+    XIBObjCClassBuilder *obj = [[XIBObjCClassBuilder alloc] initWithDictionary: self.dictionary
+                                                             withTargetRuntime: [self.runtime copyWithZone: zone]];
 
-    obj.runtime = [self.runtime copyWithZone: zone];
     obj.attributes = [self.attributes copyWithZone: zone];
     obj.header = [self.header copyWithZone: zone];
     obj.source = [self.source copyWithZone: zone];

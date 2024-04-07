@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain) NSDictionary *classMapping;
 @property (retain) NSArray *skippedKeys;
 
-- (instancetype) initWithDictionary: (NSDictionary *)dictionary;
+- (instancetype) initWithDictionary: (NSDictionary *)dictionary withTargetRuntime: (NSString *)runtime;
 - (NSDictionary *) buildClassMap;
 - (id) build;
 
