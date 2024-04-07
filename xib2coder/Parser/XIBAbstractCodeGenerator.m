@@ -188,13 +188,8 @@
     }
     else
     {
-        // NSString *elementName = [dict objectForKey: @"elementName"];
-        // NSString *entityName = [self entityNameForElementName: elementName];
         NSEnumerator *en = [dict keyEnumerator];
         id k = nil;
-        
-        // NSLog(@"Element Name = %@", entityName);
-        // NSLog(@"Object = %@", dict);
         
         while ((k = [en nextObject]) != nil)
         {
@@ -326,8 +321,6 @@
 
 - (void) generateCode
 {
-    // NSLog(@"XIB = %@", [self.objectDictionary allKeys]);
-    // NSLog(@"TOP = %@", [[self.objectDictionary objectForKey: @"objects"] allKeys]);
     [self generateCodeForObject: [self.objectDictionary objectForKey: @"objects"]
                          forKey: nil];
 }

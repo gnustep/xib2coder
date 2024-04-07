@@ -148,7 +148,6 @@
                 NSString *elemName = [o objectForKey: @"elementName"];
                 NSString *clzName = [self entityNameForElementName: elemName];
                 [self.attributes setObject: clzName forKey: k];
-                // self.type = @"struct";
             }
             
             XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o];
@@ -156,7 +155,6 @@
             builder.codeBuilder = self.codeBuilder;
             [builder build];
             
-            // NSLog(@"builder = %@", builder);
             [builder.codeBuilder addBuiltClass: builder];
         }
     }
