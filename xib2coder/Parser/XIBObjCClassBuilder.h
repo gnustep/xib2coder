@@ -10,17 +10,21 @@
 
 @class NSString;
 @class NSMutableDictionary;
+@class XIBObjCCodeBuilder;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XIBObjCClassBuilder : XIBAbstractBuilder <NSCopying>
 
-@property (retain) NSString *className;
+@property (retain) NSString *name;
 @property (retain) NSMutableDictionary *attributes;
+@property (retain) NSString *type;
 
 @property (retain) NSString *header;
 @property (retain) NSString *source;
 @property (retain) NSString *coding;
+
+@property (retain) XIBObjCCodeBuilder *codeBuilder;
 
 - (NSString *) typeForEntityValue: (id)o;
 

@@ -9,11 +9,15 @@
 
 #import "XIBAbstractBuilder.h"
 
+@class XIBObjCClassBuilder;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XIBObjCCodeBuilder : XIBAbstractBuilder
 
 @property (retain) NSMutableDictionary *resultsDictionary;
+
+- (void) addBuiltClass: (XIBObjCClassBuilder *)builder;
 
 @end
 

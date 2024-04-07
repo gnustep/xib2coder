@@ -11,6 +11,7 @@
 #import "XIBObjCClassBuilder.h"
 #import "XIBObjCAccessorBuilder.h"
 #import "NSString+Additions.h"
+#import "XIBObjCCodeBuilder.h"
 
 @implementation XIBObjCClassBuilder
 
@@ -43,26 +44,30 @@
 // Class specific
 - (NSString *) entityNameForElementName: (NSString *)elementName
 {
-    NSString *prefix = nil;
-    NSString *result = nil;
+    NSString *result = @"IBObjectContainer";
     
-    if ([self.runtime isEqualToString: @"MacOSX.Cocoa"])
+    if (elementName != nil)
     {
-        prefix = @"NS";
+        NSString *prefix = nil;
+
+        if ([self.runtime isEqualToString: @"MacOSX.Cocoa"])
+        {
+            prefix = @"NS";
+        }
+        else
+        {
+            prefix = @"UI";
+        }
+        
+        result = [NSString stringWithFormat: @"%@%@", prefix, [elementName stringByCapitalizingFirstCharacter]];
+        NSString *replacement = [self.classMapping objectForKey: result];
+        
+        if (replacement != nil)
+        {
+            result = replacement;
+        }
     }
-    else
-    {
-        prefix = @"UI";
-    }
-    
-    result = [NSString stringWithFormat: @"%@%@", prefix, [elementName stringByCapitalizingFirstCharacter]];
-    NSString *replacement = [self.classMapping objectForKey: result];
-    
-    if (replacement != nil)
-    {
-        result = replacement;
-    }
-    
+
     return result;
 }
 
@@ -106,9 +111,9 @@
     NSEnumerator *en = [self.dictionary keyEnumerator];
     id k = nil;
     
-    NSLog(@"dictionary = %@", self.dictionary);
-    
-    self.className = [self entityNameForElementName: elementName];
+    // NSLog(@"dictionary = %@", self.dictionary);
+    self.type = @"class";
+    self.name = [self entityNameForElementName: elementName];
     while ((k = [en nextObject]) != nil)
     {
         if ([self.skippedKeys containsObject: k])
@@ -143,7 +148,16 @@
                 NSString *elemName = [o objectForKey: @"elementName"];
                 NSString *clzName = [self entityNameForElementName: elemName];
                 [self.attributes setObject: clzName forKey: k];
+                // self.type = @"struct";
             }
+            
+            XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o];
+            builder.runtime = self.runtime;
+            builder.codeBuilder = self.codeBuilder;
+            [builder build];
+            
+            // NSLog(@"builder = %@", builder);
+            [builder.codeBuilder addBuiltClass: builder];
         }
     }
     
@@ -162,8 +176,14 @@
     return obj;
 }
 
+- (NSDictionary *) dictionaryRepresentation
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys: self.name, self.type, self.attributes,
+            @"name", @"type", @"attributes", nil];
+}
+
 - (NSString *) description
 {
-    return [NSString stringWithFormat: @"<%@> - className = %@, attributes = %@", [super description], self.className, self.attributes];
+    return [NSString stringWithFormat: @"<%@> - name = %@, type = %@, attributes = %@", [super description], self.name, self.type, self.attributes]; // , [self dictionaryRepresentation]];
 }
 @end
