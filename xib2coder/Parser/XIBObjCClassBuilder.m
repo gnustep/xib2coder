@@ -92,7 +92,14 @@
     }
     else
     {
-        typeName = NSStringFromClass([o class]);
+        if ([o containsString: @"YES"] || [o containsString: @"NO"])
+        {
+            typeName = @"BOOL";
+        }
+        else
+        {
+            typeName = NSStringFromClass([o class]);
+        }
     }
     
     NSString *newType = [self.classMapping objectForKey: typeName];
