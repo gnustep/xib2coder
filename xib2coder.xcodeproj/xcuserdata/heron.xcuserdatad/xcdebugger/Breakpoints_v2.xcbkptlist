@@ -78,9 +78,9 @@
             filePath = "xib2coder/Parser/XIBObjCClassBuilder.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-typeForEntityValue:"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-build"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

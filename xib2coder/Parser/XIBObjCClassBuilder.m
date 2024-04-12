@@ -73,8 +73,8 @@
 
 - (NSString *) typeForEntityValue: (id)o
 {
-    NSString *typeName = nil;
-
+    NSString *typeName = NSStringFromClass([o class]);
+    
     if ([o isNumeric])
     {
         if ([o containsString: @"-"])
@@ -90,16 +90,13 @@
             typeName =  @"NSUInteger";
         }
     }
+    else if ([o containsString: @"YES"] || [o containsString: @"NO"])
+    {
+        typeName = @"BOOL";
+    }
     else
     {
-        if ([o containsString: @"YES"] || [o containsString: @"NO"])
-        {
-            typeName = @"BOOL";
-        }
-        else
-        {
-            typeName = NSStringFromClass([o class]);
-        }
+        typeName = NSStringFromClass([o class]);
     }
     
     NSString *newType = [self.classMapping objectForKey: typeName];
@@ -121,6 +118,13 @@
     // NSLog(@"dictionary = %@", self.dictionary);
     self.type = @"class";
     self.name = [self entityNameForElementName: elementName];
+    
+    if (NULL == NSClassFromString(self.name))
+    {
+        // NSLog(@"name = %@", self.name);
+        self.type = @"primitive";
+    }
+    
     while ((k = [en nextObject]) != nil)
     {
         if ([self.skippedKeys containsObject: k])

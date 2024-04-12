@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		147BF18E2BB8D3890020F0D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 147BF18D2BB8D3890020F0D8 /* main.m */; };
+		14E3182F2BC6C567003EEBB1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E3182E2BC6C567003EEBB1 /* AppKit.framework */; };
 		14F729472BBD2D07007704BC /* XIBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729462BBD2D07007704BC /* XIBParser.m */; };
 		14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729492BBDDC48007704BC /* XIBAbstractCodeGenerator.m */; };
 		14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7294C2BBDDCB8007704BC /* NSString+Additions.m */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		147BF18A2BB8D3890020F0D8 /* xib2coder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xib2coder; sourceTree = BUILT_PRODUCTS_DIR; };
 		147BF18D2BB8D3890020F0D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14E3182E2BC6C567003EEBB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		14F729452BBD2D07007704BC /* XIBParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBParser.h; sourceTree = "<group>"; };
 		14F729462BBD2D07007704BC /* XIBParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBParser.m; sourceTree = "<group>"; };
 		14F729482BBDDC48007704BC /* XIBAbstractCodeGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBAbstractCodeGenerator.h; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E3182F2BC6C567003EEBB1 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +70,7 @@
 			children = (
 				147BF18C2BB8D3890020F0D8 /* xib2coder */,
 				147BF18B2BB8D3890020F0D8 /* Products */,
+				14E3182D2BC6C567003EEBB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +89,14 @@
 				147BF18D2BB8D3890020F0D8 /* main.m */,
 			);
 			path = xib2coder;
+			sourceTree = "<group>";
+		};
+		14E3182D2BC6C567003EEBB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14E3182E2BC6C567003EEBB1 /* AppKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		14F729442BBD2CC3007704BC /* Parser */ = {
