@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1459BCAD2BC98D6C004A5DBE /* XIBObjCClassGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1459BCAC2BC98D6C004A5DBE /* XIBObjCClassGenerator.m */; };
+		1459BCB02BC98EE7004A5DBE /* XIBClassGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1459BCAF2BC98EE7004A5DBE /* XIBClassGenerator.m */; };
 		147BF18E2BB8D3890020F0D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 147BF18D2BB8D3890020F0D8 /* main.m */; };
 		14E3182F2BC6C567003EEBB1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E3182E2BC6C567003EEBB1 /* AppKit.framework */; };
 		14F729472BBD2D07007704BC /* XIBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F729462BBD2D07007704BC /* XIBParser.m */; };
@@ -32,6 +34,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1459BCAB2BC98D6C004A5DBE /* XIBObjCClassGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBObjCClassGenerator.h; sourceTree = "<group>"; };
+		1459BCAC2BC98D6C004A5DBE /* XIBObjCClassGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBObjCClassGenerator.m; sourceTree = "<group>"; };
+		1459BCAE2BC98EE7004A5DBE /* XIBClassGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBClassGenerator.h; sourceTree = "<group>"; };
+		1459BCAF2BC98EE7004A5DBE /* XIBClassGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBClassGenerator.m; sourceTree = "<group>"; };
 		147BF18A2BB8D3890020F0D8 /* xib2coder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xib2coder; sourceTree = BUILT_PRODUCTS_DIR; };
 		147BF18D2BB8D3890020F0D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		14E3182E2BC6C567003EEBB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -65,6 +71,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1459BCAA2BC98D34004A5DBE /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				1459BCAB2BC98D6C004A5DBE /* XIBObjCClassGenerator.h */,
+				1459BCAC2BC98D6C004A5DBE /* XIBObjCClassGenerator.m */,
+				1459BCAE2BC98EE7004A5DBE /* XIBClassGenerator.h */,
+				1459BCAF2BC98EE7004A5DBE /* XIBClassGenerator.m */,
+			);
+			path = Generator;
+			sourceTree = "<group>";
+		};
 		147BF1812BB8D3890020F0D8 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +102,7 @@
 		147BF18C2BB8D3890020F0D8 /* xib2coder */ = {
 			isa = PBXGroup;
 			children = (
+				1459BCAA2BC98D34004A5DBE /* Generator */,
 				14F729442BBD2CC3007704BC /* Parser */,
 				147BF18D2BB8D3890020F0D8 /* main.m */,
 			);
@@ -183,8 +201,10 @@
 				14F729502BBDDD65007704BC /* XIBCustomObject.m in Sources */,
 				14F729562BBE8902007704BC /* XIBObjCClassBuilder.m in Sources */,
 				14F7294A2BBDDC48007704BC /* XIBAbstractCodeGenerator.m in Sources */,
+				1459BCAD2BC98D6C004A5DBE /* XIBObjCClassGenerator.m in Sources */,
 				14F7294D2BBDDCB8007704BC /* NSString+Additions.m in Sources */,
 				14F729472BBD2D07007704BC /* XIBParser.m in Sources */,
+				1459BCB02BC98EE7004A5DBE /* XIBClassGenerator.m in Sources */,
 				14F729592BBE8937007704BC /* XIBAbstractBuilder.m in Sources */,
 				14F729532BBDF2EF007704BC /* XIBObjCCodeBuilder.m in Sources */,
 				147BF18E2BB8D3890020F0D8 /* main.m in Sources */,
