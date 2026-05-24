@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" targetRuntime="MacOSX.Cocoa">
+  <objects>
+    <window id="window" title="Main Window">
+      <subviews>
+        <button id="button" title="OK" state="1"/>
+      </subviews>
+    </window>
+    <customObject id="controller" customClass="DemoController"/>
+  </objects>
+</document>
