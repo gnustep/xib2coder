@@ -10,21 +10,40 @@
 #import "Parser/XIBObjCCodeBuilder.h"
 #import "Parser/XIBParser.h"
 
+static void PrintUsage(const char *programName)
+{
+    fprintf(stderr, "usage: %s path/to/file.xib\n", programName);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/MainMenu.xib"];
-        // NSData *data = [NSData dataWithContentsOfFile: @"/Users/heron/Desktop/Main.storyboard"];
+        if (argc != 2)
+        {
+            PrintUsage(argv[0]);
+            return 64;
+        }
+        
+        NSString *path = [NSString stringWithUTF8String: argv[1]];
+        NSData *data = [NSData dataWithContentsOfFile: path];
+        if (data == nil)
+        {
+            fprintf(stderr, "xib2coder: unable to read '%s'\n", argv[1]);
+            return 66;
+        }
         
         XIBParser *xibParser = [[XIBParser alloc] initWithData: data];
         NSDictionary *result = [xibParser parse];
         NSString *runtime = xibParser.targetRuntime;
+        if (result == nil || runtime == nil)
+        {
+            fprintf(stderr, "xib2coder: '%s' is not a valid XIB document\n", argv[1]);
+            return 65;
+        }
         
-        // NSDictionary *objects = [result objectForKey: @"objects"];
         XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: result withTargetRuntime: runtime];
         id obj = [builder build];
         
-        NSLog(@"resultsDictionary = %@",builder.resultsDictionary);
+        NSLog(@"%@", builder.resultsDictionary);
         
         if (obj == nil)
         {
