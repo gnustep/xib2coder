@@ -20,9 +20,9 @@
     return self;
 }
 
-- (BOOL) build
+- (id) build
 {
-    return NO;
+    return nil;
 }
 
 @end

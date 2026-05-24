@@ -244,7 +244,7 @@
 }
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignore "-W"
+#pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
 - (void) handleMappedStruct: (NSDictionary *)dict forKey: (NSString *)key
 {
     NSString *selectorString = [self.selectorMap objectForKey: key];
@@ -268,6 +268,7 @@
         NSLog(@"No selector specified for %@",key);
     }
 }
+#pragma GCC diagnostic pop
 
 
 - (void) generateCodeForObject: (id)object forKey: (NSString *)key
