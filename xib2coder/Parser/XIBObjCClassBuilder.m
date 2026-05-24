@@ -117,7 +117,11 @@
     
     // NSLog(@"dictionary = %@", self.dictionary);
     self.type = @"class";
-    self.name = [self entityNameForElementName: elementName];
+    self.name = [self.dictionary objectForKey: @"customClass"];
+    if (self.name == nil || [self.name length] == 0)
+    {
+        self.name = [self entityNameForElementName: elementName];
+    }
     
     if (NULL == NSClassFromString(self.name))
     {
@@ -151,14 +155,24 @@
             if (keyName != nil) // object
             {
                 NSString *elemName = [o objectForKey: @"elementName"];
-                NSString *clzName = [self entityNameForElementName: elemName];
+                NSString *clzName = [o objectForKey: @"customClass"];
+
+                if (clzName == nil || [clzName length] == 0)
+                {
+                    clzName = [self entityNameForElementName: elemName];
+                }
 
                 [self.attributes setObject: clzName forKey: keyName];
             }
             else // struct
             {
                 NSString *elemName = [o objectForKey: @"elementName"];
-                NSString *clzName = [self entityNameForElementName: elemName];
+                NSString *clzName = [o objectForKey: @"customClass"];
+
+                if (clzName == nil || [clzName length] == 0)
+                {
+                    clzName = [self entityNameForElementName: elemName];
+                }
 
                 [self.attributes setObject: clzName forKey: k];
             }

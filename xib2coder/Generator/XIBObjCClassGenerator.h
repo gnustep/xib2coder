@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain) NSString *header;
 @property (retain) NSString *source;
 
+- (NSString *) generatedCode;
+
 @end
 
 NS_ASSUME_NONNULL_END

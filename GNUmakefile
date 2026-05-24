@@ -12,6 +12,8 @@ TOOL_NAME = xib2coder
 
 xib2coder_OBJC_FILES = \
 	xib2coder/main.m \
+	xib2coder/Generator/XIBClassGenerator.m \
+	xib2coder/Generator/XIBObjCClassGenerator.m \
 	xib2coder/Parser/NSString+Additions.m \
 	xib2coder/Parser/XIBAbstractBuilder.m \
 	xib2coder/Parser/XIBAbstractCodeGenerator.m \

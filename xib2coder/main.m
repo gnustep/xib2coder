@@ -9,6 +9,7 @@
 
 #import "Parser/XIBObjCCodeBuilder.h"
 #import "Parser/XIBParser.h"
+#import "Generator/XIBObjCClassGenerator.h"
 
 static void PrintUsage(const char *programName)
 {
@@ -42,10 +43,15 @@ int main(int argc, const char * argv[]) {
         
         XIBObjCCodeBuilder *builder = [[XIBObjCCodeBuilder alloc] initWithDictionary: result withTargetRuntime: runtime];
         id obj = [builder build];
-        
-        NSLog(@"%@", builder.resultsDictionary);
-        
+
         if (obj == nil)
+        {
+            return 255;
+        }
+
+        XIBObjCClassGenerator *generator = [[XIBObjCClassGenerator alloc] initWithDictionary: builder.resultsDictionary
+                                                                                    fileName: [path lastPathComponent]];
+        if ([generator generate] == NO)
         {
             return 255;
         }

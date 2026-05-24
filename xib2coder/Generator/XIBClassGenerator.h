@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (retain) NSString *fileName;
 
 - (instancetype) initWithDictionary: (NSDictionary *)dict fileName: (NSString *)fileName;
+- (BOOL) generate;
 
 @end
 
