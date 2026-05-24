@@ -108,6 +108,102 @@
     return typeName;
 }
 
+- (NSDictionary *) dictionaryForIdentifier: (NSString *)identifier inDictionary: (NSDictionary *)dictionary
+{
+    NSEnumerator *en = [dictionary keyEnumerator];
+    id k = nil;
+
+    if (identifier == nil || dictionary == nil)
+    {
+        return nil;
+    }
+
+    id directMatch = [dictionary objectForKey: identifier];
+    if ([directMatch isKindOfClass: [NSDictionary class]])
+    {
+        return directMatch;
+    }
+
+    while ((k = [en nextObject]) != nil)
+    {
+        id value = [dictionary objectForKey: k];
+        NSDictionary *match = nil;
+
+        if ([value isKindOfClass: [NSDictionary class]] == NO)
+        {
+            continue;
+        }
+
+        match = [self dictionaryForIdentifier: identifier inDictionary: value];
+        if (match != nil)
+        {
+            return match;
+        }
+    }
+
+    return nil;
+}
+
+- (NSString *) typeForObjectDictionary: (NSDictionary *)dictionary
+{
+    NSString *elemName = [dictionary objectForKey: @"elementName"];
+    NSString *clzName = [dictionary objectForKey: @"customClass"];
+
+    if (clzName == nil || [clzName length] == 0)
+    {
+        clzName = [self entityNameForElementName: elemName];
+    }
+
+    return clzName;
+}
+
+- (NSString *) typeForConnectionDestination: (NSString *)destination
+{
+    NSDictionary *destinationDictionary = [self dictionaryForIdentifier: destination
+                                                           inDictionary: self.codeBuilder.dictionary];
+
+    if (destinationDictionary == nil)
+    {
+        return @"id";
+    }
+
+    return [self typeForObjectDictionary: destinationDictionary];
+}
+
+- (void) addOutletAttributesFromConnectionsDictionary: (NSDictionary *)dictionary
+{
+    NSEnumerator *en = [dictionary keyEnumerator];
+    id k = nil;
+
+    while ((k = [en nextObject]) != nil)
+    {
+        id value = [dictionary objectForKey: k];
+        NSString *elementName = nil;
+
+        if ([value isKindOfClass: [NSDictionary class]] == NO)
+        {
+            continue;
+        }
+
+        elementName = [value objectForKey: @"elementName"];
+        if ([elementName isEqualToString: @"outlet"])
+        {
+            NSString *property = [value objectForKey: @"property"];
+            NSString *destination = [value objectForKey: @"destination"];
+
+            if (property != nil && [property length] > 0)
+            {
+                [self.attributes setObject: [self typeForConnectionDestination: destination]
+                                    forKey: property];
+            }
+        }
+        else
+        {
+            [self addOutletAttributesFromConnectionsDictionary: value];
+        }
+    }
+}
+
 // build method...
 - (id) build
 {
@@ -131,6 +227,12 @@
     
     while ((k = [en nextObject]) != nil)
     {
+        if ([k isEqualToString: @"connections"])
+        {
+            [self addOutletAttributesFromConnectionsDictionary: [self.dictionary objectForKey: k]];
+            continue;
+        }
+
         if ([self.skippedKeys containsObject: k])
         {
             continue;
@@ -166,15 +268,7 @@
             }
             else // struct
             {
-                NSString *elemName = [o objectForKey: @"elementName"];
-                NSString *clzName = [o objectForKey: @"customClass"];
-
-                if (clzName == nil || [clzName length] == 0)
-                {
-                    clzName = [self entityNameForElementName: elemName];
-                }
-
-                [self.attributes setObject: clzName forKey: k];
+                [self.attributes setObject: [self typeForObjectDictionary: o] forKey: k];
             }
             
             XIBObjCClassBuilder *builder = [[XIBObjCClassBuilder alloc] initWithDictionary: o withTargetRuntime: self.runtime];

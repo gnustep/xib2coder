@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
         }
 
         XIBObjCClassGenerator *generator = [[XIBObjCClassGenerator alloc] initWithDictionary: builder.resultsDictionary
-                                                                                    fileName: [path lastPathComponent]];
+                                                                                    fileName: path];
         if ([generator generate] == NO)
         {
             return 255;
